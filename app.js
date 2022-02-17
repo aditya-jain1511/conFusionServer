@@ -6,7 +6,7 @@ var logger = require('morgan');
 var session =require ('express-session');
 var FileStore = require('session-file-store')(session)
 var passport = require('passport');
-
+const cors = require('cors');
 const mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
@@ -53,7 +53,7 @@ app.use(express.urlencoded({ extended: false }));
 //app.use(cookieParser('12345-67890-09876-54321'));
 
 app.use(passport.initialize());
-
+app.use(cors());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
